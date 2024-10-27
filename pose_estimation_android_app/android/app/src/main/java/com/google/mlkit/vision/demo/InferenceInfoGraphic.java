@@ -15,14 +15,20 @@
  */
 
 package com.google.mlkit.vision.demo;
+import com.google.mlkit.vision.demo.java.posedetector.PoseComparison;
+
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import androidx.annotation.Nullable;
 
+
+
 /** Graphic instance for rendering inference info (latency, FPS, resolution) in an overlay view. */
 public class InferenceInfoGraphic extends GraphicOverlay.Graphic {
+
+  private PoseComparison pc = new PoseComparison();
 
   private static final int TEXT_COLOR = Color.WHITE;
   private static final float TEXT_SIZE = 60.0f;
@@ -63,6 +69,9 @@ public class InferenceInfoGraphic extends GraphicOverlay.Graphic {
           "FPS: " + framesPerSecond + ", latency: " + latency + " ms", x, y + TEXT_SIZE, textPaint);
     } else {
       canvas.drawText("Latency: " + latency + " ms", x, y + TEXT_SIZE, textPaint);
+    }
+    if(pc.get_error_bro()!=0){
+      canvas.drawText("error:" +pc.get_error_bro(), x, y + TEXT_SIZE+100.0f, textPaint);
     }
   }
 }
