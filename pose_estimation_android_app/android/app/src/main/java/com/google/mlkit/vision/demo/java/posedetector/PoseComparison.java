@@ -5,8 +5,17 @@ import java.lang.Math;
 public class PoseComparison {
     
     int numPoses;
-    PoseComparison(){
+    public PoseComparison(){
         this.numPoses = 3;
+    }
+
+    static int error_bro=0;
+
+    public void  set_error_bro(int n){
+        error_bro=n;
+    }
+    public int get_error_bro(){
+        return  error_bro;
     }
 
     /**
@@ -55,6 +64,8 @@ public class PoseComparison {
                 classifiedPoseIndex = i;
             }
         }
+
+        set_error_bro(minError);
 
         return angleErrors[classifiedPoseIndex];
     }
