@@ -47,7 +47,7 @@ public class PoseGraphic extends Graphic {
 
     private final Pose pose;
     private boolean showInFrameLikelihood;
-private float dynamicPaintThreshold = 12.5f;
+private float dynamicPaintThreshold = 100.0f;
     private float angleError;
     private final Paint linePaint;
     private final Paint linePaintGreen;
@@ -335,7 +335,7 @@ private float dynamicPaintThreshold = 12.5f;
                 for (int i=0;i<10;i++){
                     angleError += angleErrors[i];
                 }
-                if (angleError > dynamicPaintThreshold) {
+                if (angleError <= dynamicPaintThreshold) {
                     dynamicLinePaint.setColor(Color.rgb(getRed(angleErrors[0]),getGreen(angleErrors[0]),0));
                     drawLine(canvas, new_leftShoulder, new_leftElbow, dynamicLinePaint);
                     dynamicLinePaint.setColor(Color.rgb(getRed(angleErrors[1]),getGreen(angleErrors[1]),0));
